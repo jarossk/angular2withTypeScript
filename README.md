@@ -1,2 +1,7 @@
-# angular2withTypeScript
-Angular2 with TypeScript
+# Angular2 with TypeScript
+
+# Quick start
+1. Setup
+- Configure TypeScript
+- TypeScript Typings
+- Add the libraries
