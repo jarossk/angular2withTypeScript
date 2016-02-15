@@ -19,11 +19,16 @@ System.register(['angular2/core'], function(exports_1) {
             // metadata
             AppComponent = (function () {
                 function AppComponent() {
+                    this.title = 'Tour of Heroes';
+                    this.hero = {
+                        id: 1,
+                        name: 'Jarek'
+                    };
                 }
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>My first Angular 2 App with TypeScript</h1>'
+                        template: "\n    <h1>{{title}}</h1>\n    <h2>{{hero.name}} details!</h2>\n    <div><lable>id: </lable>{{hero.id}}</div>\n    <div>\n      <lable>name: {{hero.name}}</lable>\n      <div><input [(ngModel)]=\"hero.name\" placeholder=\"name\"></div>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AppComponent);

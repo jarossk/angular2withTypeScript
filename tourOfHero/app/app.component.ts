@@ -1,13 +1,32 @@
 // Technically, a component is a class that controls a view template
 import {Component} from 'angular2/core';
 
+interface Hero {
+  id: number;
+  name: string;
+}
+
 // metadata
 @Component({
   selector: 'my-app',
-  template: '<h1>My first Angular 2 App with TypeScript</h1>'
+  template: `
+    <h1>{{title}}</h1>
+    <h2>{{hero.name}} details!</h2>
+    <div><lable>id: </lable>{{hero.id}}</div>
+    <div>
+      <lable>name: {{hero.name}}</lable>
+      <div><input [(ngModel)]="hero.name" placeholder="name"></div>
+    </div>
+  `
 })
 
-export class AppComponent { }
+export class AppComponent {
+  public title = 'Tour of Heroes';
+  public hero: Hero = {
+    id: 1,
+    name: 'Jarek'
+  };
+ }
 
 /*
 The Component class
