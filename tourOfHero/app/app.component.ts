@@ -1,10 +1,7 @@
 // Technically, a component is a class that controls a view template
 import {Component} from 'angular2/core';
-
-interface Hero {
-  id: number;
-  name: string;
-}
+import {Hero} from './hero';
+import {HeroDetailComponent} from './hero-detail.component';
 
 // metadata
 @Component({
@@ -19,14 +16,7 @@ interface Hero {
        <span class="badge">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
-    <div *ngIf="selectedHero">
-      <h2>{{selectedHero.name}} details!</h2>
-      <div><lable>id: </lable>{{selectedHero.id}}</div>
-      <div>
-        <lable>name: {{selectedHero.name}}</lable>
-        <div><input [(ngModel)]="selectedHero.name" placeholder="name"></div>
-      </div>
-    </div>
+     <my-hero-detail [hero]="selectedHero"></my-hero-detail>
   `,
   styles:[`
     .selected {
@@ -75,7 +65,8 @@ interface Hero {
       margin-right: .8em;
       border-radius: 4px 0px 0px 4px;
     }
-  `]
+  `],
+  directives: [HeroDetailComponent]
 })
 
 export class AppComponent {
