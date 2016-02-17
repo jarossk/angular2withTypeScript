@@ -1,7 +1,8 @@
 // Technically, a component is a class that controls a view template
-import {Component} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {Hero} from './hero';
 import {HeroDetailComponent} from './hero-detail.component';
+import {HeroService} from './hero.service';
 
 // metadata
 @Component({
@@ -66,31 +67,27 @@ import {HeroDetailComponent} from './hero-detail.component';
       border-radius: 4px 0px 0px 4px;
     }
   `],
-  directives: [HeroDetailComponent]
+  directives: [HeroDetailComponent],
+  providers: [HeroService]
 })
 
-export class AppComponent {
-  public title = 'Tour of Heroes';
-  heroes = HEROES;
+export class AppComponent implements OnInit {
+  title = 'Tour of Heroes';
+  heroes: Hero[];
   selectedHero: Hero;
+  //  (_) to warn readers of our code that this variable  
+  // is not part of the component's public API
+  constructor(private _heroService: HeroService) {}
+  getHeroes() {
+    this._heroService.getHeroesSlowly().then(heroes => this.heroes = heroes);
+  }
+  ngOnInit() {
+    this.getHeroes();
+  }
   onSelect(hero: Hero) {
     this.selectedHero = hero;
   }
  }
- 
- var HEROES: Hero[] = [
-   {"id": 11, "name": "MR. Nice"},
-   {"id": 12, "name": "Narco"},
-   {"id": 13, "name": "Bombasto"},
-   {"id": 14, "name": "Celeritas"},
-   {"id": 15, "name": "Magneta"},
-   {"id": 16, "name": "RubberMan"},
-   {"id": 17, "name": "Dynama"},
-   {"id": 18, "name": "Dr IQ"},
-   {"id": 19, "name": "Magma"},
-   {"id": 20, "name": "Tornado"}
- ];
-
 /*
 The Component class
 At the bottom of the file is an empty, do-nothing class named AppComponent. 
