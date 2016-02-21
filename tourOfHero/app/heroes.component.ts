@@ -8,8 +8,8 @@ import {HeroService} from './hero.service';
 // metadata
 @Component({
   selector: 'my-heroes',
-  templateUrl: 'app/heroes.component.html',
-  styleUrls: ['app/heroes.component.css'],
+  templateUrl: 'app/views/heroes.component.html',
+  styleUrls: ['app/css/heroes.component.css'],
   directives: [HeroDetailComponent]
   //providers: [HeroService]
 })
